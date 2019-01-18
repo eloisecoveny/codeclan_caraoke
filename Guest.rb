@@ -18,4 +18,11 @@ class Guest
     @cash -= entry_fee
   end
 
+  def plays_favourite_song(playlist)
+    playlist.each do |song|
+      return "Woo Hoo!" if song.title == @fav_song
+      return nil
+    end
+  end
+
 end
