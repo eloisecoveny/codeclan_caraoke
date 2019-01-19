@@ -69,4 +69,10 @@ class TestRoom < MiniTest::Test
     assert_equal([@guest1, @guest2, @guest3, @guest5], guest_checks_in)
   end
 
+  def test_check_in_guest__fails
+    @room = Room.new(2, [@song1, @song2], [@guest1, @guest2])
+    result = @room.check_in_guest(@guest3)
+    assert_equal(false, result)
+  end
+
 end

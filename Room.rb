@@ -36,6 +36,7 @@ class Room
       takes_entry_fee_from_guest(new_guest)
       return @guests
     end
+    return false
   end
 
 end
