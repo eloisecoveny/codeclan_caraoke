@@ -1,6 +1,7 @@
 class Room
 
-  attr_reader :capacity, :playlist, :guests, :entry_fee, :kitty
+  attr_reader :capacity, :playlist, :guests, :entry_fee
+  attr_accessor :kitty
 
   def initialize(capacity, playlist, guests)
     @capacity = capacity
@@ -24,15 +25,15 @@ class Room
     return false
   end
 
-  def adds_cash_to_kitty()
-    return @kitty += @entry_fee
+  def takes_entry_fee_from_guest(guest)
+     return guest.pays_entry_fee(@entry_fee)
   end
 
   def check_in_guest(new_guest)
     if free_space() && new_guest.can_afford(@entry_fee)
       add_guest(new_guest)
       new_guest.pays_entry_fee(@entry_fee)
-      adds_cash_to_kitty()
+      takes_entry_fee_from_guest(new_guest)
       return @guests
     end
   end

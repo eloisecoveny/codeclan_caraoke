@@ -40,7 +40,8 @@ class TestGuest < MiniTest::Test
   end
 
   def test_pays_entry_fee
-    @guest1.pays_entry_fee(@room.entry_fee)
+    entry_fee = @guest1.pays_entry_fee(@room.entry_fee)
+    assert_equal(10, entry_fee)
     assert_equal(15, @guest1.cash)
   end
 

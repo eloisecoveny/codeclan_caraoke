@@ -3,6 +3,7 @@ require("minitest/rg")
 require_relative("../Room")
 require_relative("../Guest")
 require_relative("../Song")
+require_relative("../Bar")
 
 class TestRoom < MiniTest::Test
 
@@ -23,6 +24,8 @@ class TestRoom < MiniTest::Test
     @guests = [@guest1, @guest2, @guest3]
 
     @room = Room.new(7, @songs, @guests)
+
+    @bar = Bar.new("CodeClan Caraoke", @rooms)
   end
 
   def test_get_room_capacity
@@ -56,9 +59,9 @@ class TestRoom < MiniTest::Test
     assert_equal(false, @room2.free_space())
   end
 
-  def test_adds_cash_to_kitty()
-    @room.adds_cash_to_kitty()
-    assert_equal(10, @room.kitty)
+  def takes_entry_fee_from_guest
+    entry_fee = @room.takes_entry_fee_from_guest(@guest1)
+    assert_equal(10, entry_fee)
   end
 
   def test_check_in_guest__succeeds

@@ -16,6 +16,7 @@ class Guest
 
   def pays_entry_fee(entry_fee)
     @cash -= entry_fee
+    return entry_fee
   end
 
   def plays_favourite_song(playlist)
