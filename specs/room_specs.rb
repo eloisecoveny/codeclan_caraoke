@@ -24,8 +24,6 @@ class TestRoom < MiniTest::Test
     @guests = [@guest1, @guest2, @guest3]
 
     @room = Room.new(7, @songs, @guests)
-
-    @bar = Bar.new("CodeClan Caraoke", @rooms)
   end
 
   def test_get_room_capacity
@@ -70,8 +68,9 @@ class TestRoom < MiniTest::Test
   end
 
   def test_check_in_guest__fails
-    @room = Room.new(2, [@song1, @song2], [@guest1, @guest2])
-    result = @room.check_in_guest(@guest3)
+    @room1 = Room.new(2, [@song1, @song2], [@guest1, @guest2])
+    @room2 = Room.new(5, [@song1, @song2], [])
+    result = @room1.check_in_guest(@guest3)
     assert_equal(false, result)
   end
 

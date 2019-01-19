@@ -45,4 +45,11 @@ class TestBar < MiniTest::Test
     assert_equal(10, @bar.till)
   end
 
+  def test_bar_opens_new_room_to_guest
+    @room1 = Room.new(2, @songs, [@guest1, @guest2])
+    @room2 = Room.new(4, @songs, [])
+    @bar.opens_new_room(@guest5, @room1, @room2)
+    assert_equal([@guest5], @room2.guests)
+  end
+
 end

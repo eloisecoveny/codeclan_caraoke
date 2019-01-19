@@ -14,4 +14,10 @@ class Bar
     @till += entry_fee
   end
 
+  def opens_new_room(guest, full_room, new_room)
+    if full_room.check_in_guest(guest) == false
+      new_room.check_in_guest(guest)
+    end
+  end
+
 end
