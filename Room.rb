@@ -1,14 +1,12 @@
 class Room
 
   attr_reader :capacity, :playlist, :guests, :entry_fee
-  attr_accessor :kitty
 
   def initialize(capacity, playlist, guests)
     @capacity = capacity
     @playlist = playlist
     @guests = guests
     @entry_fee = 10
-    @kitty = 0
   end
 
   def add_guest(guest_to_add)

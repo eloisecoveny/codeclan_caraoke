@@ -15,10 +15,10 @@ class TestBar < MiniTest::Test
 
     @songs = [@song1, @song2, @song3, @song4]
 
-    @guest1 = Guest.new("Alice", "Video Games", 25)
+    @guest1 = Guest.new("Alice", @song1, 25)
     @guest2 = Guest.new("George", "Runner Beans", 35)
-    @guest3 = Guest.new("Bobby", "Alone in Kyoto", 15)
-    @guest4 = Guest.new("Antonia", "Head Over Heels", 5)
+    @guest3 = Guest.new("Bobby", @song4, 15)
+    @guest4 = Guest.new("Antonia", @song3, 5)
     @guest5 = Guest.new("Mark", "Born Wild", 40)
 
     @guests = [@guest1, @guest2, @guest3]
