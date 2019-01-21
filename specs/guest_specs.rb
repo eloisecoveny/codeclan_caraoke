@@ -10,7 +10,7 @@ class TestGuest < MiniTest::Test
     @song1 = Song.new("Video Games", "Lana Del Ray")
     @song2 = Song.new("Under The Milky Way", "The Church")
 
-    @guest1 = Guest.new("Alice", "Video Games", 25)
+    @guest1 = Guest.new("Alice", @song1, 25)
     @guest2 = Guest.new("George", "Runner Beans", 35)
     @guest3 = Guest.new("Antonia", "Head Over Heels", 5)
 
@@ -24,7 +24,7 @@ class TestGuest < MiniTest::Test
   end
 
   def test_get_guest_favourite_song
-    assert_equal("Video Games", @guest1.fav_song)
+    assert_equal(@song1, @guest1.fav_song)
   end
 
   def test_get_guest_cash
@@ -40,8 +40,8 @@ class TestGuest < MiniTest::Test
   end
 
   def test_pays_entry_fee
-    entry_fee = @guest1.pays_entry_fee(@room.entry_fee)
-    assert_equal(10, entry_fee)
+    @guest1.pays_entry_fee(@room.entry_fee)
+    assert_equal(10, @room.entry_fee)
     assert_equal(15, @guest1.cash)
   end
 

@@ -21,12 +21,12 @@ class Room
 
   def free_space()
     number_of_guests = @guests.length()
-    return true if number_of_guests < @capacity
-    return false
+    return number_of_guests < @capacity
   end
 
   def takes_entry_fee_from_guest(guest)
-     return guest.pays_entry_fee(@entry_fee)
+     guest.pays_entry_fee(@entry_fee)
+     return @entry_fee
   end
 
   def check_in_guest(new_guest)

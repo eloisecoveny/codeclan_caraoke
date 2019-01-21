@@ -14,9 +14,11 @@ class Bar
     @till += entry_fee
   end
 
-  def ushers_in_guests(guest, room1, room2)
-    if room1.check_in_guest(guest) == false
-      room2.check_in_guest(guest)
+  def ushers_in_guest(guest)
+    for room in @rooms
+      if room.free_space()
+        room.check_in_guest(guest)
+      end
     end
   end
 

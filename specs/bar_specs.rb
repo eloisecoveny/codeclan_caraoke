@@ -48,7 +48,9 @@ class TestBar < MiniTest::Test
   def test_bar_ushers_guests_to_rooms
     @room1 = Room.new(2, @songs, [@guest1, @guest2])
     @room2 = Room.new(4, @songs, [])
-    @bar.ushers_in_guests(@guest5, @room1, @room2)
+    @rooms = [@room1, @room2]
+    @bar = Bar.new("CodeClan Caraoke", @rooms)
+    @bar.ushers_in_guest(@guest5)
     assert_equal([@guest5], @room2.guests)
   end
 
